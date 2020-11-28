@@ -4,6 +4,13 @@
     <transition name="fade">
       <p v-if="show">Hello</p>
     </transition>
+    <transition name="slide">
+      <!-- 
+        追加で<p>タグなどを追加すると下記のエラーとなるため、その場合は<div>タグで囲む
+        <transition> can only be used on a single element. Use <transition-group> for lists. 
+      -->
+        <p v-if="show">bye</p>
+    </transition>
   </div>
 </template>
 
@@ -27,6 +34,7 @@ export default {
   ・fade-enter-toとfade-enter-activeを削除
   */
 
+/* fade */
   .fade-enter{
     /* 現れる時の最初の状態 */
     opacity: 0;
@@ -58,6 +66,43 @@ export default {
   .fade-leave-to{
     /* 消える時の最後の状態 */
     opacity: 0;
+  }
+
+  /* slide */
+  /* @keyframesが-active以外よしなにやってくれる */
+  .slide-enter{
+    /* 現れる時の最初の状態 */
+  }
+
+  .slide-enter-active{
+    /* 現れる時のトランジションの状態 */
+    animation: slide-in 0.5s;
+  }
+
+  .slide-enter-to{
+    /* 現れる時の最後の状態 */
+  }
+
+  .slide-leave{
+    /* 消える時の最初の状態 */
+  }
+
+  .slide-leave-active{
+    /* 消える時のトランジションの状態 */
+    animation: slide-in 0.5s reverse;
+  }
+
+  .slideleave-to{
+    /* 消える時の最後の状態 */
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100px);
+    }
+    to {
+      transform: translateX(0) ;
+    }
   }
 
   .main{
