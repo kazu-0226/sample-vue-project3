@@ -69,6 +69,8 @@ export default {
   }
 
   /* slide */
+
+  /* @keyframesのアニメーションをanimationプロパティで指定する */
   /* @keyframesが-active以外よしなにやってくれる */
   .slide-enter{
     /* 現れる時の最初の状態 */
@@ -89,6 +91,7 @@ export default {
 
   .slide-leave-active{
     /* 消える時のトランジションの状態 */
+    /* reverseで逆の動きが可能となる */
     animation: slide-in 0.5s reverse;
   }
 
@@ -96,6 +99,7 @@ export default {
     /* 消える時の最後の状態 */
   }
 
+  /* アニメーション開始から終了するまでどのようなアニメーションをするのか指定できる */
   @keyframes slide-in {
     from {
       transform: translateX(100px);
